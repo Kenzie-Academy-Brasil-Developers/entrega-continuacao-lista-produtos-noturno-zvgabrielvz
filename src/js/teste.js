@@ -1,16 +1,16 @@
 // Selecionando elemento ul do HTML
 const ul = document.querySelector('.containerListaProdutos ul');
 const ulTeste = document.querySelector('.descPrincipal');
-const campoPrecoTotal = document.getElementById('precoTotalValor')
 let arrayClassName = [];
-let arrayPreco = [];
 
 
-
-function montarListaProdutos(listaProdutos) { 
-    ul.innerHTML = '';
+function montarListaProdutos(listaProdutos) {
     
+    let somaValor = 0; 
+    ul.innerHTML = '';
+
     listaProdutos.forEach((produto) => {
+        
         const li = document.createElement('li');
         const img = document.createElement('img');
         const h3 = document.createElement('h3');
@@ -18,14 +18,12 @@ function montarListaProdutos(listaProdutos) {
         const span = document.createElement('span');
         const ulAdd = document.createElement('ol');
         
-        // Arredondando Preco
-        const precoArr = produto.preco.toFixed(2);
 
         // Adicionando dados do produto aos elementos
         img.src = produto.img;
         img.alt = produto.nome;
         h3.innerText = produto.nome;
-        p.innerText = precoArr
+        p.innerText = produto.preco;
         span.innerText = produto.secao;
         
        
@@ -41,6 +39,10 @@ function montarListaProdutos(listaProdutos) {
         ul.appendChild(li);
         
 
+        // Calculando Preço
+        let preco = produto.preco;
+        somaValor += preco;
+        console.log(somaValor)
 
         // Adicionando lista de propriedades adicionais
 
@@ -64,7 +66,12 @@ function montarListaProdutos(listaProdutos) {
         li.appendChild(button);
     });
     
-
+    //const campoPreco = document.getElementById('precoTotal');
+    //campoPreco.innerHTML = somaValor.toFixed(2);
+    //console.log(listaProdutos)
+   
+    
+   
 }
 
 function filtrarPorHortifruti() {
@@ -72,6 +79,8 @@ function filtrarPorHortifruti() {
         return produto.secao === 'hortifruti';
     });
     montarListaProdutos(listaHortifruti);
+    //nodeButton();
+    
 
 }
 
@@ -83,14 +92,12 @@ const buttonFilterHortifruti = document.getElementById('hortifruti');
 
 buttonShowAll.addEventListener("click", function(){
     montarListaProdutos(produtos);
-    nodeButton();
+    //nodeButton();
+    
 });
 
 
-buttonFilterHortifruti.addEventListener("click", function(){
-    filtrarPorHortifruti();
-    nodeButton();
-});
+buttonFilterHortifruti.addEventListener("click", filtrarPorHortifruti);
 
 function textoNome() {
     const inputNome = document.getElementById('inputNome');
@@ -111,23 +118,10 @@ function filtrarPorNome() {
     const listaSecao = produtos.filter((produto) => {
         return produto.secao === inputNome;
     });
-    if(listaCategoria.length === 0 && listaSecao.length === 0){
-        montarListaProdutos(listaNome);
-        nodeButton();
-    }
-    if(listaNome.length === 0 && listaSecao.length ===0){
-        montarListaProdutos(listaCategoria);
-        nodeButton();
-    } else{
-        montarListaProdutos(listaSecao);
-        nodeButton();
-    }
-
-
-
+    
+    montarListaProdutos(listaNome);
     //montarListaProdutos(listaCategoria);
     //montarListaProdutos(listaSecao);
-    
 
 }
 
@@ -135,8 +129,8 @@ function filtrarPorNome() {
 const botaoFiltraNome = document.querySelector('.estiloGeralBotoes--botaoBuscaPorNome');
 
 botaoFiltraNome.addEventListener('click', function(){
-    filtrarPorNome();
-    
+    filtrarPorNome;
+    console.log("teste")
 });
 
 
@@ -147,87 +141,60 @@ function nodeButton(){
     const btn = document.querySelectorAll("ul button");
     btn[0].addEventListener("click", function() {    
         const parent = this.parentNode;        
-        //console.log(parent);
-        //console.log(parent.classList);
-        ulCarrinho.appendChild(parent.cloneNode(true));
-        arrayPreco.push(Number(btn[0].parentNode.children[2].innerText));
-        somaTotal();
-
-
+        console.log(parent);
+        console.log(parent.classList);
       });
      btn[1].addEventListener("click", function() {    
         const parent = this.parentNode;        
-        //console.log(parent);
-        //console.log(parent.classList);
-        ulCarrinho.appendChild(parent.cloneNode(true));
-        arrayPreco.push(Number(btn[1].parentNode.children[2].innerText));
-        somaTotal();
-
-
+        console.log(parent);
+        console.log(parent.classList);
       });
       btn[2].addEventListener("click", function() {    
         const parent = this.parentNode;        
-        //console.log(parent);
-        //console.log(parent.classList);
-        ulCarrinho.appendChild(parent.cloneNode(true));
-
-        arrayPreco.push(Number(btn[2].parentNode.children[2].innerText));
-        somaTotal();
+        console.log(parent);
+        console.log(parent.classList);
       });
      btn[3].addEventListener("click", function() {    
         const parent = this.parentNode;        
-        //console.log(parent);
-        //console.log(parent.classList);
-        ulCarrinho.appendChild(parent.cloneNode(true));
-
-        arrayPreco.push(Number(btn[3].parentNode.children[2].innerText));
-        somaTotal();
+        console.log(parent);
+        console.log(parent.classList);
       });
       btn[4].addEventListener("click", function() {    
         const parent = this.parentNode;        
-        //console.log(parent);
-        //console.log(parent.classList);
-        ulCarrinho.appendChild(parent.cloneNode(true));
-
-        arrayPreco.push(Number(btn[4].parentNode.children[2].innerText));
-        somaTotal();
+        console.log(parent);
+        console.log(parent.classList);
       });
      btn[5].addEventListener("click", function() {    
         const parent = this.parentNode;        
-        //console.log(parent);
-        //console.log(parent.classList);
-        ulCarrinho.appendChild(parent.cloneNode(true));
-
-        arrayPreco.push(Number(btn[5].parentNode.children[2].innerText));
-        somaTotal();
+        console.log(parent);
+        console.log(parent.classList);
       });
-          
-}
-
-function preço() {
-const campoPreco = document.getElementById('precoTotal')
-let preco = produto.preco;
-somaValor += preco;
-//console.log(somaValor)
-campoPreco.innerHTML = somaValor
-
 }
 
 
-function somaTotal(){
 
-    let sum = 0;
-    for(let i = 0; i < arrayPreco.length; i++){
-        sum = sum + arrayPreco[i];
-    }
-    campoPrecoTotal.innerText = sum
-    //console.log(sum)
-}
+/*
+  btn[3].addEventListener("click", function() {
+    
+    var parent = this.parentNode;
+    
+    console.log(parent);
+    console.log(parent.classList);
+  });
 
+  btn[4].addEventListener("click", function() {
+    
+    var parent = this.parentNode;
+    
+    console.log(parent);
+    console.log(parent.classList);
+  });
 
-const btLimparCarrinho = document.getElementById('limparCarrinho');
-
-btLimparCarrinho.addEventListener("click", function(){
-    document.location.reload(true)
-
-})
+  btn[5].addEventListener("click", function() {
+    
+    var parent = this.parentNode;
+    
+    console.log(parent);
+    console.log(parent.classList);
+  });
+*/

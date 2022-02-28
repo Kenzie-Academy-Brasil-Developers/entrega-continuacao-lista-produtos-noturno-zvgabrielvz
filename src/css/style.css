@@ -2,6 +2,15 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+h1{
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 2rem;
+    background-color: aquamarine;
+    
+    
+}
+
 /* CABEÇALHO */
 .filtersContainer {
     display: flex;
